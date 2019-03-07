@@ -176,7 +176,7 @@ class tplinksmartplugPlugin(octoprint.plugin.SettingsPlugin,
 			self._tplinksmartplug_logger.debug(check_status_cmnd)
 			response = self.sendCommand(check_status_cmnd, plugip)
 
-			if "ENE" in self.lookup(response, *["system","get_sysinfo","feature"]):
+			if "HACK_DISABLE_ENE" in self.lookup(response, *["system","get_sysinfo","feature"]):
 				check_emeter_data = self.sendCommand('{"emeter":{"get_realtime":{}}}', plugip)
 				if self.lookup(check_emeter_data, *["emeter","get_realtime"]):
 					emeter_data = check_emeter_data["emeter"]
